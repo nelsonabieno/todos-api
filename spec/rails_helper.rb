@@ -51,7 +51,7 @@ RSpec.configure do |config|
   # start by truncating all the tables but then use the faster transaction strategy the rest of the time
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-    Database.strategy = :transaction
+    DatabaseCleaner.strategy = :transaction
   end
 
   # start the transaction strategy as examples are run
