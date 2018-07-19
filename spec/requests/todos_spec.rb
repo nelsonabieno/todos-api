@@ -57,7 +57,7 @@ RSpec.describe 'Todos API', type: :request do
       before { post '/todos', params: valid_attributes }
 
       it 'creates a todo' do
-        expect(json['title']).to eq("Movies in the space")
+        expect(json['title']).to eq('Movies in the space')
         expect(json['created_by']).to eq('Nelson')
       end
 
@@ -84,7 +84,7 @@ RSpec.describe 'Todos API', type: :request do
     let(:valid_attributes) { { title:'Parachutes in the space ', created_by: 'Johnson' } }
 
     context "when a todo has been updated" do
-      before { put '/todos/#{todo_id}', params:valid_attributes  }
+      before { put "/todos/#{todo_id}", params:valid_attributes  }
 
       it 'should return a status code of 204' do
         expect(response).to have_http_status(204)
@@ -94,15 +94,11 @@ RSpec.describe 'Todos API', type: :request do
         expect(response.body).to be_empty
       end
 
-      it 'should have the updated todo title' do
-        expect(json['title']).to match(/Parachutes in the space /)
-      end
-
     end
   end
 
   describe 'DELETE /todos/:id' do
-    before { delete '/todos/#{todo_id}' }
+    before { delete "/todos/#{todo_id}" }
 
     context 'when a todo has been deleted' do
       it 'should return a status code of 204' do
